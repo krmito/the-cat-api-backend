@@ -1,0 +1,178 @@
+{
+  "info": {
+    "name": "API de Gatos",
+    "description": "Colección de endpoints para la API de Gatos con autenticación de usuarios",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/",
+              "host": ["{{baseUrl}}"],
+              "path": [""]
+            },
+            "description": "Verifica que la API esté funcionando correctamente"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Autenticación",
+      "item": [
+        {
+          "name": "Registrar Usuario",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Juan Pérez\",\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["register"]
+            },
+            "description": "Registra un nuevo usuario en el sistema"
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"juan@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["login"]
+            },
+            "description": "Autentica un usuario existente"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Razas de Gatos",
+      "item": [
+        {
+          "name": "Obtener Todas las Razas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/breeds",
+              "host": ["{{baseUrl}}"],
+              "path": ["breeds"]
+            },
+            "description": "Obtiene una lista con los nombres de todas las razas de gatos"
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener Raza por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/breeds/:breedId",
+              "host": ["{{baseUrl}}"],
+              "path": ["breeds", ":breedId"],
+              "variable": [
+                {
+                  "key": "breedId",
+                  "value": "abys",
+                  "description": "ID de la raza (ej: abys, pers, beng)"
+                }
+              ]
+            },
+            "description": "Obtiene información de una raza específica por su ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Buscar Razas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/breeds/search?q=persian&attach_image=1",
+              "host": ["{{baseUrl}}"],
+              "path": ["breeds", "search"],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "persian",
+                  "description": "Término de búsqueda"
+                },
+                {
+                  "key": "attach_image",
+                  "value": "1",
+                  "description": "1 para incluir imagen de referencia"
+                }
+              ]
+            },
+            "description": "Busca razas de gatos por nombre (búsqueda parcial)"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Imágenes",
+      "item": [
+        {
+          "name": "Obtener Imagen por Raza",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/imagesByBreedId/:breedId",
+              "host": ["{{baseUrl}}"],
+              "path": ["imagesByBreedId", ":breedId"],
+              "variable": [
+                {
+                  "key": "breedId",
+                  "value": "abys",
+                  "description": "ID de la raza"
+                }
+              ]
+            },
+            "description": "Obtiene la URL de la imagen de referencia de una raza específica"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ]
+}

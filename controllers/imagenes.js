@@ -28,7 +28,13 @@ router.get("/imagesByBreedId/:breedId", async (req, res) => {
       },
     });
     const image = response?.data;
-    res.json(image.url);
+    // Retornar un array con el objeto completo de la imagen
+    res.json([{
+      id: image.id,
+      url: image.url,
+      width: image.width,
+      height: image.height
+    }]);
   } catch (error) {
     res.status(HttpStatusCode.InternalServerError).json({
       mensaje: ERROR_MESSAGES.ERROR_GET_BREEDS,

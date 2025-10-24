@@ -1,0 +1,45 @@
+# Dependencias
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Tests
+__tests__
+*.test.js
+coverage
+jest.config.js
+TEST_README.md
+
+# Documentación
+*.md
+!README.md
+EXAMPLES.md
+
+# Git
+.git
+.gitignore
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Archivos temporales
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Postman
+*.postman_collection.json
